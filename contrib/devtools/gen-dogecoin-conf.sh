@@ -8,8 +8,8 @@ TOPDIR=${TOPDIR:-$(git rev-parse --show-toplevel)}
 BUILDDIR=${BUILDDIR:-$TOPDIR}
 BINDIR=${BINDIR:-$BUILDDIR/src}
 DOGECOIND=${DOGECOIND:-$BINDIR/dogecoind}
-SHARE_EXAMPLES_DIR=${SHARE_EXAMPLES_DIR:-$TOPDIR/share}
-EXAMPLE_CONF_FILE=${EXAMPLE_CONF_FILE:-$SHARE_EXAMPLES_DIR/dogecoin.conf}
+SHARE_DIR=${SHARE_DIR:-$TOPDIR/share}
+EXAMPLE_CONF_FILE=${EXAMPLE_CONF_FILE:-$SHARE_DIR/dogecoin.conf}
 
 [ ! -x "$DOGECOIND" ] && echo "$DOGECOIND not found or not executable." && exit 1
 
@@ -25,10 +25,10 @@ then
   echo -e "To safely generate a dogecoin.conf file, please commit your changes to $DOGECOIND, rebuild, then run this script again.\n"
 fi
 
-echo 'Generating example dogecoin.conf file in share/examples/'
+echo 'Generating example dogecoin.conf file in share/'
 
 # create the directory, if it doesn't exist
-mkdir -p "${SHARE_EXAMPLES_DIR}"
+mkdir -p "${SHARE_DIR}"
 
 # create the header text
 cat > "${EXAMPLE_CONF_FILE}" << 'EOF'
